@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_create_order_form" model="ir.ui.view">
+        <field name="name">create.order.wizard.form</field>
+        <field name="model">create.order.wizard</field>
+        <field name="arch" type="xml">
+                <form>
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="order_line"/>
+                            </group>
+                            <footer>
+                                <button special="cancel" data-hotkey="q" string="Cancel" type="object" class="oe_highlight"/>
+                                <button name="action_confirmed" string="Confirm Order" type="object" class="btn-primary"/>
+                            </footer>
+               </form>
+        </field>
+    </record>
+    <record id="action_create_order" model="ir.actions.act_window">
+        <field name="name">Create Order Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.order.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>
+
+
+
+
+
+
