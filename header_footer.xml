@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="custom_header_footer">
+        <t t-set="company" t-value="user.company_id"/>
+        <div class="header">
+                    <div class ="row" style="font-family: 'Trebuchet MS',sans-serif;font-size:12pt;">
+                         <div class="col-6 text-left">
+                             <p>
+                                 فاتورة ضريبية
+                             <br/>
+                                 <strong style="color:red">TAX INVOICE</strong>
+<!--                                 dkp-->
+                             </p>
+<!--                              <div t-field="company.partner_id"-->
+<!--                                   t-options='{"widget":"contact","fields":["street","name"],"no_marker":true}'/>-->
+                         </div>
+<!--                        contact=address-->
+                         <div class="col-2">
+                              <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height:45px;" alt="logo"/>
+                         </div>
+                         <div class="col-5 text-right">
+                                 <p>
+                                        <bold style="font-size:24pt;">تاثير للآلات والمعدات</bold>
+                                 <br/>
+                                        <strong style="color:red;font-size:10pt;">TATHIR FOR MACHINARY AND EQUIPMENT</strong>
+                                 <br/>
+                                         معكم من سنين
+                                 </p>
+                         </div>
+<!--                         <div class="=row text-right">-->
+<!--                              <div t-if="report_type=='pdf'" class="text-muted">-->
+<!--                                  page:<li class="list-inline-item"><strong><span class="page"/> / <span class="esgtopage"/></strong></li>-->
+<!--                              </div>-->
+<!--                         </div>-->
+<!--                             <div>-->
+<!--&lt;!&ndash;                                   print date:<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%y-%m-%d')"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                              </div>&ndash;&gt;-->
+<!--                             </div>-->
+                        <div t-if="company.logo or company.report_header" class="row zero_min_height">
+                                  <div class="row">
+                                       <div style="border-bottom: 1px solid black;"/>
+                             </div>
+                         </div>
+                    </div>
+        </div>
+        <div class="footer">
+             <div class="text_center" style="border-top: 1px solid black;">
+                 <ul class="list-inline mb4 text-nowrap">
+                     <li t-if="company.phone" class="list-inline-item d-inline">Phone: <span class="o_force_ltr" t-field="company.phone"/></li>
+                     <li t-if="company.email" class="list-inline-item d-inline">Email: <span t-field="company.email"/></li>
+                     <li t-if="company.website" class="list-inline-item d-inline">Web: <span t-field="company.website"/></li>
+                     <li t-if="company.vat" class="list-inline-item d-inline"><t t-esc="company.country_id.vat_label or 'Tax ID'"/></li>
+                     <li t-if="company.mobile" class="list-inline-item d-inline">Mobile: <span t-field="company.mobile"/></li>
+                     <li t-if="company.id" class="list-inline-item d-inline">CR: <span t-field="company.id"/></li>
+                     <li t-if="company.street" class="list-inline-item d-inline"><span t-field="company.street"/></li>
+                     <li t-if="company.name" class="list-inline-item d-inline"><span t-field="company.name"/></li>
+                 </ul>
+             </div>
+             <div class="=col-6 mb4 text-right">
+                 <div t-if="report_type=='pdf'" class="text-muted">
+                     page:<li class="list-inline-item"><strong><span class="page"/> / <span class="topage"/></strong></li>
+                 </div>
+             </div>
+        </div>
+        <!--       </xpath>-->
+    </template>
+</odoo>
